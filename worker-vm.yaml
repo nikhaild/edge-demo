@@ -1,0 +1,10 @@
+apiVersion: vmoperator.vmware.com/v1alpha1
+kind: VirtualMachineClass
+metadata:
+  name: best-effort-keswick-small
+  # No resource requests/reservations.
+  # Memory overcommit possible.
+spec:
+  hardware:
+    cpus: 2  # Must be power of 2, e.g. 1, 2, 4, ...
+    memory: 6Gi
