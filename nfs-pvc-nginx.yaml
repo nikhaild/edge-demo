@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-nfs-example
+  name: nginx-nfs-example1
   namespace: default
 spec:
   containers:
