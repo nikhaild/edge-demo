@@ -38,7 +38,7 @@ spec:
         "kubernetes.io/os": linux
       containers:
         - name: nfs-server
-          image: itsthenetwork/nfs-server-alpine:latest
+          image: harbor-repo.vmware.com/dockerhub-proxy-cache/itsthenetwork/nfs-server-alpine:latest
           env:
             - name: SHARED_DIRECTORY
               value: "/exports"
