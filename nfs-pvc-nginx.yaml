@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: pvc-nginx-1Mi
+  name: pvc-nginx1
   namespace: default
 spec:
   accessModes:
@@ -27,8 +27,8 @@ spec:
           protocol: TCP
       volumeMounts:
         - mountPath: /var/www
-          name: pvc-nginx-1Mi
+          name: pvc-nginx1
   volumes:
-    - name: pvc-nginx-1Mi
+    - name: pvc-nginx1
       persistentVolumeClaim:
-        claimName: pvc-nginx-1Mi
+        claimName: pvc-nginx1
