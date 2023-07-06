@@ -2,21 +2,21 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: pvc-nginx1
+  name: pvc-nginx2
   namespace: default
 spec:
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Mi
-  volumeName: pv-nginx
+  volumeName: pv-nginx1
   storageClassName: ""
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-nfs-example1
+  name: nginx-nfs-example2
   namespace: default
 spec:
   containers:
@@ -27,8 +27,8 @@ spec:
           protocol: TCP
       volumeMounts:
         - mountPath: /var/www
-          name: pvc-nginx1
+          name: pvc-nginx2
   volumes:
-    - name: pvc-nginx1
+    - name: pvc-nginx2
       persistentVolumeClaim:
-        claimName: pvc-nginx1
+        claimName: pvc-nginx2
