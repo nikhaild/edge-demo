@@ -1,7 +1,7 @@
 apiVersion: esx.vmware.com/v1alpha1
 kind: HostConfiguration
 metadata:
-  name: keswick-host-config
+  name: ntp-sync
   namespace: esx-system
 spec:
   layertype: Incremental
@@ -25,5 +25,75 @@ spec:
             }
           }
         }
+      }
+    }
+---
+apiVersion: esx.vmware.com/v1alpha1
+kind: HostConfiguration
+metadata:
+  name: welcome-message
+  namespace: esx-system
+spec:
+  layertype: Incremental
+  profile: |
+    {
+      "esx": {
+          "system": {
+            "welcome_message": {
+                "message": "{align:left}{color:white} \n\n\n\n\tKeswick Lab Demo{/color}{/align}\n\n\n\n\n\n\n\n\n{align:left}{color:yellow} \tTo manage this host, go to: \n\thttps://{ip}/ (DHCP)\n\thttps://[fe80::8aae:ddff:fe0c:b382]/ (STATIC){/color}{/align}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n{align:left}{color:yellow} <F2> Customize System/View Logs{/color}{/align}{align:right}{color:yellow} <F12> Shut Down/Restart{/color}{/align}"
+            }
+          }
+      }
+    }
+---
+apiVersion: esx.vmware.com/v1alpha1
+kind: HostConfiguration
+metadata:
+  name: monitoring-user
+  namespace: esx-system
+spec:
+  layertype: Incremental
+  profile: |
+    {
+      "esx": {
+        "authentication": {
+          "user_accounts": [
+            {
+              "name": "monitor",
+              "password_hash": "$6$LINgevkj9ju.rwj7$8R4iWtteX.4zpMeXb3ifJqvNm1zC0KcZhhIArHCoXKhKtguwPQQrt5pkZYMLQvkK8cX4LVsx0o9ozHMSTSl3F0",
+              "description": "Monitoring user account"
+            }
+          ]
+        },
+        "authorization": {
+          "permissions": [
+            {
+              "principal": "monitor",
+              "is_group": false,
+              "access_mode": "ReadOnly"
+            }
+          ]
+        }
+      }
+    }
+---
+apiVersion: esx.vmware.com/v1alpha1
+kind: HostConfiguration
+metadata:
+  name: usb-nic-scan-on-boot
+  namespace: esx-system
+spec:
+  layertype: Incremental
+  profile: |
+    {
+      "esx": {
+          "vmkernel": {
+            "module_settings": [
+              {
+                "module_name": "vmkusb_nic_fling",
+                "options": "usbBusFullScanOnBootEnabled=1"
+              }
+            ]
+          }
       }
     }
