@@ -46,36 +46,36 @@ spec:
       }
     }
 ---
-#apiVersion: esx.vmware.com/v1alpha1
-#kind: HostConfiguration
-#metadata:
-#  name: monitoring-user
-#  namespace: esx-system
-#spec:
-#  layertype: Incremental
-#  profile: |
-#    {
-#      "esx": {
-#        "authentication": {
-#          "user_accounts": [
-#            {
-#              "name": "monitor",
-#              "password_hash": "$6$LINgevkj9ju.rwj7$8R4iWtteX.4zpMeXb3ifJqvNm1zC0KcZhhIArHCoXKhKtguwPQQrt5pkZYMLQvkK8cX4LVsx0o9ozHMSTSl3F0",
-#              "description": "Monitoring user account"
-#            }
-#          ]
-#        },
-#        "authorization": {
-#          "permissions": [
-#            {
-#              "principal": "monitor",
-#              "is_group": false,
-#              "access_mode": "ReadOnly"
-#            }
-#          ]
-#        }
-#      }
-#    }
+apiVersion: esx.vmware.com/v1alpha1
+kind: HostConfiguration
+metadata:
+  name: monitoring-user
+  namespace: esx-system
+spec:
+  layertype: Incremental
+  profile: |
+    {
+      "esx": {
+        "authentication": {
+          "user_accounts": [
+            {
+              "name": "monitor",
+              "password_hash": "$6$vocvaTDqp5Cg.$Q6q7pshtoHi59oeU9O9zJN4FQ4gjtobSvA1RKG1FbSeIhNIdYwrXCcYPMm8NUTb8GtkFSSjstdkQj2IYld2Qx/",
+              "description": "Monitoring user account"
+            }
+          ]
+        },
+        "authorization": {
+          "permissions": [
+            {
+              "principal": "monitor",
+              "is_group": false,
+              "access_mode": "ReadOnly"
+            }
+          ]
+        }
+      }
+    }
 #---
 #apiVersion: esx.vmware.com/v1alpha1
 #kind: HostConfiguration
